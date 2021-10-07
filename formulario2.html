@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario</title>
+
+</head>
+
+<body>
+    <div class="container">
+        <form action="x.php">
+            <div class="mb-3">
+                <label for="exampleImputEmail" class="form-label">Dirección de correo</label>
+                <input type="email" class="form-control" id="exampleInputEmail" aria-describedby="emailHelp">
+                <div id="emailHelp" class="form-next">Nunca compartiremos tu correo con nadie más.</div>
+            </div>
+            <div class="mb-3">
+                <label for="exampleInutPassword1" class="form-label">Contraseña</label>
+                <input type="password" class="form-control" id="exampleInputPassword1">
+            </div>
+            <div class="mb-3 form-check">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                <label class="form-check-label" for="exampleCheck1">Recuérdame</label>
+            </div>
+            <!-- NO genera un envio y NO genera querystring si el tipo es "button" -->
+            <button type="button" class="btn btn-primary" id="btnEnviar1">Enviar1</button>
+            <!-- genera un envio y querystring -->
+            <button class="btn btn-dark" onclick="window.alert('enviar2')">Enviar2</button>
+            <!-- genera un salto y no hay querystring-->
+            <a href="" class="btn btn-danger" onclick="window.alert('enviar3')">Enviar3</a>
+            <!-- NO genera un envio y NO hay querystring-->
+            <a class="btn btn-primary" onclick="boton4()">Enviar4</a>
+            <!-- NO genera un envio y NO hay querystring-->
+            <a class="btn btn-primary" id="btnEnviar5">Enviar5</a>
+        </form>
+    </div>
+</body>
+<script src="formulario2.js"></script>
+</html>
