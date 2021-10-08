@@ -31,9 +31,9 @@ public class App
             System.out.println(l + " " + p);
             
             if (l.equals("root") && p.equals("123123"))
-            respuesta = "Bienvenido root <a href='http://127.0.0.1:5500/tabla_datos.html'>Mostrar Datos</a>";
+            respuesta = "Bienvenido root <a href='http://127.0.0.1:5500/Lista.html'>Mostrar Datos</a>";
             else
-            respuesta = "Usuario no encontrado <a href='http://127.0.0.1:5500/envio_js_registro.html'>Registrarme</a>";
+            respuesta = "Usuario no encontrado <a href='http://127.0.0.1:5500/Formulario.html'>Registrarme</a>";
             return respuesta;
         });
     }

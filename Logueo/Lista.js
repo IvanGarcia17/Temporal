@@ -1,6 +1,6 @@
 var tabla = [
-	{ nombre: "root", password: 123456 },
-	{ nombre: "usuario1", password: "usuario1" }
+	{ nombre: "root", password: 123123 },
+	{ nombre: "usuario0", password: "123" }
 ];
 
 window.onload = cargarEventos;
