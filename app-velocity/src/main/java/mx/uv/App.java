@@ -22,16 +22,17 @@ public class App
     private static Map<String, Usuario> usuarios = new HashMap<>();
     
     public static void main( String[] args ) {
-        System.out.println( "Hello World!" );
+        port(getHerokuAssignedPort());
+        get("/hello", (req, res) -> "Hello Heroku World");}
 
-        staticFiles.location("/");
+        //staticFiles.location("/");
         
 
         //Tiene prevalencia el mapero estático de forma que
         //si tenemos un index.html, este se va a cargar primero que 
         //el mapero de la raíz "/"
 
-        get("/", (req, res) -> {
+       /* get("/", (req, res) -> {
             return "respuesta";
         });
 
@@ -73,5 +74,15 @@ public class App
             model.put("nombre", usuarios.values());
             return new VelocityTemplateEngine().render(new ModelAndView(model, "templates/hola.vm"));
         });
+    }*/
+
+    static int getHerokuAssignedPort() {
+        ProcessBuilder processBuilder = new ProcessBuilder();
+        if (processBuilder.environment().get("PORT") != null) {
+            return Integer.parseInt(processBuilder.environment().get("PORT"));
+        }
+        return 4567; //return default port if heroku-port isn't set (i.e. on localhost)
     }
+
+
 }
