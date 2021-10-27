@@ -22,17 +22,32 @@ public class App
     private static Map<String, Usuario> usuarios = new HashMap<>();
     
     public static void main( String[] args ) {
+        System.out.println("Helo Wordl!");
         port(getHerokuAssignedPort());
-        get("/hello", (req, res) -> "Hello Heroku World");}
-
-        //staticFiles.location("/");
+        staticFiles.location("/");
         
+        options("/*", (request, response) -> {
+
+            String accessControlRequestHeaders = request.headers("Access-Control-Request-Headers");
+            if (accessControlRequestHeaders != null) {
+                response.header("Access-Control-Allow-Headers", accessControlRequestHeaders);
+            }
+
+            String accessControlRequestMethod = request.headers("Access-Control-Request-Method");
+            if (accessControlRequestHeaders != null) {
+                response.header("Access-Control-Allow-Methods", accessControlRequestMethod);
+            }
+
+            return "OK";
+        });
+
+        before((request, response) -> response.header("Access-Control-Allow-Origin", "*"));
 
         //Tiene prevalencia el mapero estático de forma que
         //si tenemos un index.html, este se va a cargar primero que 
         //el mapero de la raíz "/"
 
-       /* get("/", (req, res) -> {
+        get("/", (req, res) -> {
             return "respuesta";
         });
 
@@ -74,7 +89,7 @@ public class App
             model.put("nombre", usuarios.values());
             return new VelocityTemplateEngine().render(new ModelAndView(model, "templates/hola.vm"));
         });
-    }*/
+    }
 
     static int getHerokuAssignedPort() {
         ProcessBuilder processBuilder = new ProcessBuilder();
