@@ -48,7 +48,8 @@ public class App
         //el mapero de la raíz "/"
 
         get("/", (req, res) -> {
-            return "respuesta";
+            res.redirect("/index.html");
+            return null;
         });
 
         get("/hola", (req, res) -> {
